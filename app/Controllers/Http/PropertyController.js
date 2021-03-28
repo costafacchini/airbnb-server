@@ -1,4 +1,5 @@
 'use strict'
+const Property = use('App/Models/Property')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -18,6 +19,7 @@ class PropertyController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
+    return Property.all()
   }
 
   /**
