@@ -70,6 +70,13 @@ class PropertyController {
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
+    const property = await Property.findOrFail(params.id)
+
+    if (property.user_id !== auth.user.id) {
+      return response.status(401).send({ error: 'Not authorized' })
+    }
+
+    await property.delete()
   }
 }
 
