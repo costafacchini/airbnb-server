@@ -35,6 +35,18 @@ class PropertyController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+    const { id } = auth.user
+    const data = request.only([
+      'title',
+      'address',
+      'latitude',
+      'longitude',
+      'price'
+    ])
+
+    const property = await Property.create({ ...data, user_id: id })
+
+    return property
   }
 
   /**
