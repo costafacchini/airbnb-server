@@ -43,6 +43,11 @@ class PropertyController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
+    const property = await Property.findOrFail(params.id)
+
+    await property.load('images')
+
+    return property
   }
 
   /**
