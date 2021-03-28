@@ -34,7 +34,7 @@ class PropertyController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ auth, request, response }) {
     const { id } = auth.user
     const data = request.only([
       'title',
